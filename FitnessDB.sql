@@ -22,6 +22,28 @@ CREATE TABLE Exercitii (
 );
 GO
 
+CREATE TABLE Retete (
+    ID INT PRIMARY KEY IDENTITY(1,1),
+    Calorii INT NOT NULL,
+    Carbohidrati DECIMAL(5,2) NOT NULL,
+    Proteine DECIMAL(5,2) NOT NULL,
+    Grasimi DECIMAL(5,2) NOT NULL,
+    Ingrediente NVARCHAR(MAX) NOT NULL,
+	TipMasa NVARCHAR(20) NOT NULL CHECK (TipMasa IN ('Mic Dejun', 'Pranz', 'Cina', 'Gustare'))
+);
+GO
+
+CREATE TABLE Utilizatori (
+    ID INT PRIMARY KEY IDENTITY(1,1),
+    Name NVARCHAR(100) NOT NULL,
+    HashedPassword NVARCHAR(255) NOT NULL,
+    Sex NVARCHAR(10) CHECK (Sex IN ('Masculin', 'Feminin')),
+    Height DECIMAL(5,2),
+    Weight DECIMAL(5,2),
+    PhysicalCondition NVARCHAR(50),
+    UserType NVARCHAR(20) CHECK (UserType IN ('Utilizator', 'Nutritionist', 'Administrator')) NOT NULL
+);
+
 INSERT INTO Exercitii (DenumireExercitiu, Repetari, GrupaMusculara, Seturi, Descriere, TimpEstimareExecutie)
 VALUES
 ('Flotari', 12, 'push', 4, 'Exercitiu pentru piept si triceps', 8),
@@ -83,16 +105,6 @@ VALUES
 
 GO
 
-CREATE TABLE Retete (
-    ID INT PRIMARY KEY IDENTITY(1,1),
-    Calorii INT NOT NULL,
-    Carbohidrati DECIMAL(5,2) NOT NULL,
-    Proteine DECIMAL(5,2) NOT NULL,
-    Grasimi DECIMAL(5,2) NOT NULL,
-    Ingrediente NVARCHAR(MAX) NOT NULL,
-	TipMasa NVARCHAR(20) NOT NULL CHECK (TipMasa IN ('Mic Dejun', 'Pranz', 'Cina', 'Gustare'))
-);
-GO
 
 INSERT INTO Retete (Calorii, Carbohidrati, Proteine, Grasimi, Ingrediente, TipMasa)
 VALUES
@@ -184,20 +196,3 @@ VALUES
     (230, 25.00, 10.00, 8.00, 'Batoane energizante (2 buc)', 'Gustare'),
     (190, 20.00, 9.00, 5.00, 'Cheesecake (1 felie)', 'Gustare');
 GO
-
-CREATE TABLE Utilizatori (
-    ID INT PRIMARY KEY IDENTITY(1,1),
-    Name NVARCHAR(100) NOT NULL,
-    HashedPassword NVARCHAR(255) NOT NULL,
-    Sex NVARCHAR(10) CHECK (Sex IN ('Masculin', 'Feminin')),
-    Height DECIMAL(5,2),
-    Weight DECIMAL(5,2),
-    PhysicalCondition NVARCHAR(50),
-    UserType NVARCHAR(20) CHECK (UserType IN ('Utilizator', 'Nutritionist', 'Administrator')) NOT NULL
-);
-
-CREATE LOGIN Fitness WITH PASSWORD = 'FitnessDB';
-USE FitnessNutritieDB;
-CREATE USER FitnessClient FOR LOGIN Fitness;
-EXEC sp_addrolemember 'db_datawriter', 'FitnessClient';
-EXEC sp_addrolemember 'db_datareader', 'FitnessClient';
