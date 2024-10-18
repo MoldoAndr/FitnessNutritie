@@ -1,0 +1,7 @@
+C:\Users\Andrei\Desktop\FitnessNutritionDB\obj\Debug\FitnessNutritionDB.csproj.AssemblyReference.cache
+C:\Users\Andrei\Desktop\FitnessNutritionDB\obj\Debug\FitnessNutritionDB.csproj.CoreCompileInputs.cache
+C:\Users\Andrei\Desktop\FitnessNutritionDB\bin\Debug\FitnessNutritionDB.exe.config
+C:\Users\Andrei\Desktop\FitnessNutritionDB\bin\Debug\FitnessNutritionDB.exe
+C:\Users\Andrei\Desktop\FitnessNutritionDB\bin\Debug\FitnessNutritionDB.pdb
+C:\Users\Andrei\Desktop\FitnessNutritionDB\obj\Debug\FitnessNutritionDB.exe
+C:\Users\Andrei\Desktop\FitnessNutritionDB\obj\Debug\FitnessNutritionDB.pdb
