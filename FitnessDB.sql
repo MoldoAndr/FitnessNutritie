@@ -37,15 +37,45 @@ CREATE TABLE Utilizatori (
     ID INT PRIMARY KEY IDENTITY(1,1),
     Name NVARCHAR(100) NOT NULL,
     HashedPassword NVARCHAR(255) NOT NULL,
-    Sex NVARCHAR(10) CHECK (Sex IN ('Masculin', 'Feminin')),
+    Sex NVARCHAR(16) CHECK (Sex IN ('Masculin', 'Feminin', 'Unspecified')) NULL,
     Height DECIMAL(5,2),
-    Weight DECIMAL(5,2),
+    Kilograms DECIMAL(5,2),
     PhysicalCondition NVARCHAR(50),
     UserType NVARCHAR(20) CHECK (UserType IN ('Utilizator', 'Nutritionist', 'Administrator')) NOT NULL
 );
 
 INSERT INTO Exercitii (DenumireExercitiu, Repetari, GrupaMusculara, Seturi, Descriere, TimpEstimareExecutie)
 VALUES
+('Impins la banca inclinata cu bara', 10, 'push', 4, 'Exercitiu pentru partea superioara a pieptului', 9),
+('Flotari cu bratele largi', 12, 'push', 4, 'Exercitiu pentru piept, folosind o priza larga', 7),
+('Impins la banca declinata cu bara', 8, 'push', 4, 'Exercitiu pentru partea inferioara a pieptului', 9),
+('Flotari pliometrice', 10, 'push', 3, 'Flotari explozive pentru putere si viteza', 6),
+('Extensii triceps pe banca cu haltera', 12, 'push', 3, 'Exercitiu pentru izolare triceps', 8),
+('Flotari la perete', 15, 'push', 4, 'Exercitiu de baza pentru piept si triceps', 6),
+('Impins de la piept cu gantera pe mingea de fitness', 12, 'push', 3, 'Exercitiu pentru stabilitate si piept', 7),
+('Flotari in plan inclinat', 10, 'push', 3, 'Exercitiu pentru partea superioara a pieptului', 6),
+('Extensii triceps la aparat', 12, 'push', 3, 'Exercitiu pentru triceps cu cablu', 7),
+('Presa de umeri la aparat', 8, 'push', 4, 'Exercitiu pentru dezvoltarea umerilor', 9),
+('Ramat cu cablu', 12, 'pull', 4, 'Exercitiu pentru dezvoltarea spatelui', 9),
+('Tractiuni la inel', 10, 'pull', 3, 'Exercitiu pentru spate folosind inele', 10),
+('Ramat la banca inclinata cu gantera', 12, 'pull', 4, 'Exercitiu pentru izolare spate', 8),
+('Indreptari sumo', 8, 'pull', 4, 'Varianta sumo a indreptarilor pentru spate si picioare', 12),
+('Pulldown la cablu', 12, 'pull', 4, 'Exercitiu pentru spate, simuland tractiuni', 8),
+('Tractiuni cu priza ingusta', 10, 'pull', 3, 'Exercitiu pentru spate si biceps', 9),
+('Ramat vertical cu bara', 12, 'pull', 3, 'Exercitiu pentru dezvoltarea spatelui superior si trapezului', 7),
+('Indreptari cu haltera hexagonala', 8, 'pull', 4, 'Varianta de indreptari cu haltera hexagonala', 11),
+('Ramat T-bar', 10, 'pull', 4, 'Exercitiu pentru dezvoltarea spatelui', 9),
+('Tractiuni la aparat', 12, 'pull', 3, 'Exercitiu pentru spate cu asistenta', 8),
+('Genuflexiuni frontale cu bara', 10, 'legs', 4, 'Exercitiu pentru cvadriceps si abdomen', 10),
+('Genuflexiuni sumo', 12, 'legs', 4, 'Exercitiu pentru coapse si fesieri', 9),
+('Presa la aparatul Smith', 12, 'legs', 4, 'Exercitiu controlat pentru picioare', 8),
+('Indreptari romanesti cu gantere', 10, 'legs', 3, 'Exercitiu pentru hamstrings si fesieri', 10),
+('Genuflexiuni cu priza larga', 12, 'legs', 4, 'Exercitiu pentru coapse si fesieri', 9),
+('Fandari cu bara', 10, 'legs', 3, 'Exercitiu pentru picioare si fesieri', 8),
+('Presa pentru picioare unilaterala', 12, 'legs', 3, 'Exercitiu pentru dezvoltarea fortei pe un picior', 9),
+('Salturi pliometrice', 15, 'legs', 3, 'Exercitiu exploziv pentru picioare si rezistenta', 7),
+('Ridicari pe varfuri la presa', 15, 'legs', 4, 'Exercitiu pentru gambe la presa pentru picioare', 8),
+('Step-up pe cutie cu gantere', 12, 'legs', 3, 'Exercitiu pentru picioare si stabilitate', 9),
 ('Flotari', 12, 'push', 4, 'Exercitiu pentru piept si triceps', 8),
 ('Impins la piept cu bara', 8, 'push', 4, 'Exercitiu clasic pentru dezvoltarea pieptului', 10),
 ('Impins deasupra capului cu gantere', 10, 'push', 3, 'Exercitiu pentru umeri si triceps', 9),
@@ -196,3 +226,7 @@ VALUES
     (230, 25.00, 10.00, 8.00, 'Batoane energizante (2 buc)', 'Gustare'),
     (190, 20.00, 9.00, 5.00, 'Cheesecake (1 felie)', 'Gustare');
 GO
+
+SELECT * FROM Utilizatori;
+SELECT * FROM Exercitii;
+SELECT * FROM Retete;
